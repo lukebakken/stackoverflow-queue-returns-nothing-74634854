@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "RIgB9JmI4YfKv8ueerHgAU0kas7qeDH5x3+Kmi4hcUDlnd6zdkafvEdPKtRjO5flyqQ7d11CQ/bh/l9YBLG1rw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bogda\\Desktop\\an4\\sd\\angular_aspnet_docker\\rabbitMQ_producer\\rabbitMQ_producer\\rabbitMQ_producer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bogda\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\bogda\\.nuget\\packages\\rabbitmq.client\\6.4.0\\rabbitmq.client.6.4.0.nupkg.sha512",
+    "C:\\Users\\bogda\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\bogda\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

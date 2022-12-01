@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "YOA5DftV7QoxNrPgqZjBTsrYlpphm9k01ltHS4Wl4Yg=",
+  "Source": "web_api",
+  "BasePath": "_content/web_api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "web_api\\wwwroot",
+      "Source": "web_api",
+      "ContentRoot": "C:\\Users\\bogda\\Desktop\\an4\\sd\\angular_aspnet_docker\\web_api\\web_api\\wwwroot\\",
+      "BasePath": "_content/web_api",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
