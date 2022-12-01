@@ -4,6 +4,7 @@ using RabbitMQ.Client.Events;
 using System.Text;
 using web_api.Data;
 using web_api.Models;
+using web_api.Rabbit;
 
 namespace web_api.Controllers
 {
@@ -12,8 +13,13 @@ namespace web_api.Controllers
     public class TimestampsController : Controller
     {
         private readonly MyDbContext _context;
+        private readonly IRabbitMQConsumer _consumer;
 
-        public TimestampsController(MyDbContext context) { _context = context; }
+        public TimestampsController(MyDbContext context, IRabbitMQConsumer consumer) 
+        { 
+            _context = context; 
+            _consumer = consumer;
+        }
 
         private async void CreateTimestamp(Timestamp timestampRequest)
         {
@@ -26,13 +32,45 @@ namespace web_api.Controllers
         //  [FromBody] Timestamp timestampRequest)
         private void UpdateTimestamps(string timestampRequest)
         {
-            Console.WriteLine(timestampRequest);
+            Console.WriteLine($"update {timestampRequest}");
         }
 
-        [HttpPost]
-        public void RabbitMQConsumer(Timestamp timestampRequest)
+        /*private static string GetMessage()
         {
-            var factory = new ConnectionFactory
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            using var connection = factory.CreateConnection();
+            using var channel = connection.CreateModel();
+            channel.QueueDeclare(
+                queue: "consumption",
+                durable: false,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null
+                );
+
+            var consumer = new EventingBasicConsumer(channel);
+
+            string message = string.Empty;
+            consumer.Received += (model, ea) =>
+            {
+                var body = ea.Body.ToArray();
+                message = Encoding.UTF8.GetString(body);
+            };
+
+            channel.BasicConsume(queue: "consumption",
+                autoAck: true,
+                consumer: consumer
+                );
+            return message;
+        }*/
+
+        [HttpPost]
+        public void RabbitMQConsumer()
+        {
+
+            string message = _consumer.ReceiveTimestamp();
+            UpdateTimestamps(message);
+            /*var factory = new ConnectionFactory
             {
                 HostName = "localhost"
             };
@@ -62,7 +100,8 @@ namespace web_api.Controllers
             }
 
             channel.BasicConsume(queue: "consumption", autoAck: true, consumer: consumer);
-                //.FindAsync(timestampRequest.id);
+            */
+            //.FindAsync(timestampRequest.id);
         }
 
             //if (timestamp == null)
