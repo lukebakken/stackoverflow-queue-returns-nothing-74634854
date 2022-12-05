@@ -67,6 +67,8 @@ namespace web_api.Controllers
             var newRefreshToken = GenerateRefreshToken();
             SetRefreshToken(newRefreshToken, client);
 
+            await Task.Yield();
+
             return Ok(token);
         }
 

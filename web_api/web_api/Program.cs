@@ -43,7 +43,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false
         };
     });
-builder.Services.AddScoped<IRabbitMQConsumer, RabbitMQConsumer>();
+
+builder.Services.AddSingleton<IRabbitMQConsumer, RabbitMQConsumer>();
 
 var app = builder.Build();
 
